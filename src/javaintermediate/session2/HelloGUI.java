@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 public class HelloGUI extends JFrame {
 	
@@ -25,6 +27,13 @@ public class HelloGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {	
 				setTitle(textField.getText());
 				JOptionPane.showMessageDialog(null, textField.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
+		textField.addCaretListener(new CaretListener() {		
+			@Override
+			public void caretUpdate(CaretEvent arg0) {
+				setTitle(textField.getText());
 			}
 		});
 
